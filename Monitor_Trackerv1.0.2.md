@@ -1,4 +1,4 @@
-# Automated Notes Protection and Update Script - Monitor_Trackerv1.0.3
+# Automated Notes Protection and Update Script - Monitor_Trackerv1.0.2
 
 This script manages and updates the "Automated Notes" column in a Google Sheets spreadsheet. It protects the column against unauthorized edits, dynamically updates its contents based on other columns' data, and includes enhanced features for logging, error handling, and compatibility with dynamic headers.
 
