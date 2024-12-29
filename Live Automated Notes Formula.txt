@@ -1,0 +1,32 @@
+=ARRAYFORMULA(
+  IF(
+    ROW(A2:A) = 1,
+    "Automated Notes",
+    IF(
+      (INDEX(A2:Z, 0, MATCH("Serial", A1:Z1, 0)) <> "") *
+      (INDEX(A2:Z, 0, MATCH("Asset Tag", A1:Z1, 0)) <> "") *
+      (INDEX(A2:Z, 0, MATCH("Hostname", A1:Z1, 0)) <> "") *
+      (INDEX(A2:Z, 0, MATCH("Location", A1:Z1, 0)) = ""),
+      "Sufficient: Missing Loc",
+      IF(
+        (INDEX(A2:Z, 0, MATCH("Location", A1:Z1, 0)) = "") *
+        (INDEX(A2:Z, 0, MATCH("Serial", A1:Z1, 0)) = "") *
+        (INDEX(A2:Z, 0, MATCH("Asset Tag", A1:Z1, 0)) = "") *
+        (INDEX(A2:Z, 0, MATCH("Hostname", A1:Z1, 0)) = ""),
+        "",
+        IF(
+          (INDEX(A2:Z, 0, MATCH("Location", A1:Z1, 0)) <> "") *
+          (INDEX(A2:Z, 0, MATCH("Serial", A1:Z1, 0)) <> "") *
+          (INDEX(A2:Z, 0, MATCH("Asset Tag", A1:Z1, 0)) <> "") *
+          (INDEX(A2:Z, 0, MATCH("Hostname", A1:Z1, 0)) <> ""),
+          "Complete",
+          "Missing: " &
+          IF(INDEX(A2:Z, 0, MATCH("Location", A1:Z1, 0)) = "", "Loc", "") &
+          IF(INDEX(A2:Z, 0, MATCH("Serial", A1:Z1, 0)) = "", ", Serial", "") &
+          IF(INDEX(A2:Z, 0, MATCH("Asset Tag", A1:Z1, 0)) = "", ", Asset", "") &
+          IF(INDEX(A2:Z, 0, MATCH("Hostname", A1:Z1, 0)) = "", ", Host", "")
+        )
+      )
+    )
+  )
+)
