@@ -1,0 +1,1 @@
+=COUNTIF('12/30'!G2:G1004, "Complete") + COUNTIF('12/30'!G2:G1004, "Sufficient: Missing Loc")
